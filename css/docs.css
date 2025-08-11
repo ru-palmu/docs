@@ -1,0 +1,134 @@
+
+
+.docs-title {
+  margin: 1.2rem 0;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: #2c3e50; /* 濃い文字色でコントラスト確保 */
+  background: rgba(255,255,255,0.8); /* 半透明白で帯状に */
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2e7d32; /* 濃い緑でワンポイント */
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 浮かせて目立たせる */
+}
+
+/***************************************************
+ * 個別: listener_title.html
+ ***************************************************/
+
+/* 称号カラー */
+.grade-white {
+  background-color: #ffffff; /* 白 */
+  color: #000;
+}
+
+.grade-bronze {
+  background-color: #cd7f32; /* 銅色 */
+  color: #fff;
+}
+
+.grade-silver {
+  background-color: #c0c0c0; /* 銀色 */
+  color: #000;
+}
+
+.grade-gold {
+  background-color: #ffd700; /* 金色 */
+  color: #000;
+}
+
+.listener-titles-table td.grade-white,
+.listener-titles-table td.grade-bronze,
+.listener-titles-table td.grade-silver,
+.listener-titles-table td.grade-gold {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* listener-titles専用テーブル */
+table.listener-titles-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 2em;
+  font-size: 0.9em;
+}
+table.listener-titles-table th,
+table.listener-titles-table td {
+  border: 1px solid #aaa;
+  padding: 4px 6px;
+  text-align: left;
+}
+table.listener-titles-table th {
+/*
+  background-color: #f4f4f4;
+*/
+  background-color: #e0e8f0;
+}
+
+/* 英語名を改行させない */
+.listener-titles-table .nowrap {
+	  white-space: nowrap;
+}
+
+/* 横スクロール対応 */
+.listener-titles-wrapper {
+  overflow-x: auto;
+}
+
+
+/* スマホ向け（幅が狭い時） */
+@media screen and (max-width: 600px) {
+  .listener-titles-table {
+    font-size: 0.8rem;
+  }
+  .listener-titles-table th,
+  .listener-titles-table td {
+    padding: 3px 4px;
+  }
+  /* 横スクロール可能にする */
+  .listener-titles-wrapper {
+    overflow-x: auto;
+  }
+}
+
+/* カテゴリ見出し */
+h2 {
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 0.2em;
+  margin-top: 2em;
+  color: #333;
+}
+
+/***************************************************
+ * 個別: badge.html
+ ***************************************************/
+
+table.fan-badge {
+  text-align: right;
+  border-collapse: collapse;
+  margin: 0em 3em;
+}
+
+table.fan-badge td,
+table.fan-badge th {
+/*  border: 1px solid #aaa; */
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+}
+table.fan-badge tr:nth-child(even) {
+  background-color: #e4f0dc;
+}
+
+table.fan-badge td:nth-child(1),
+table.fan-badge td:nth-child(2) {
+	min-width: 2em;
+}
+
+table.fan-badge td:nth-child(3),
+table.fan-badge td:nth-child(4),
+table.fan-badge td:nth-child(5) {
+	min-width: 4em;
+}
+

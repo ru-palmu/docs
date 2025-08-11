@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <base href="../meter/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/meter.js?v=25"></script>
+  <script  src="js/navi.js?v=25"></script>
+  <script  src="../docs/js/docs.js?v=25" defer></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1005701113779263"
+	       crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="../docs/css/docs.css?v=25">
+  <link rel="icon" href="favicon.ico" type="image/icon">
+  <title>ライブスコアとコイン - パルムの計算機 for Palmu</title>
+  <meta name="description" content="Palmu（パルム）専用のコイン計算機．ライブスコアとコイン">
+</head>
+<body>
+
+<header>
+<h1 class="tool-title">ぱ(る)むの計算機 for Palmu</h1>
+<nav id="navi_rank"></nav>
+<nav id="navi_func"></nav>
+
+<h2 class="docs-title">ライブスコアとコイン - 「3 倍」</h2>
+</header>
+
+
+<main>
+<div class="intro">
+	<span class="term" data-term="score">ライブスコア</span>の算出ロジックは公開されていないが，
+	リスナーに投げられた<span class="term" data-term="coin">コイン数</span>（ギフト数）のおおよそ 3 倍になることが知られている．
+
+	<p>
+	一方で，ライブスコアがコイン数の 2 倍程度になるケースもある．
+	ここでは，ライブスコアがコイン数の 3 倍にするためにどうすればいいかについて記載する．
+	<p>
+	ここでの記載は，2025/08/11 現在の仕様に基づいている点に注意されたい．
+</div>
+
+<span class="sub-title">ライブスコアの算出</span>
+
+<p>
+ライブスコアは，デイリーランクポイントに直結する数値であり，
+ランクキープ・ランクアップのために重要な数値である．
+
+<p>
+ライブスコアは，
+「コイン数」「コメント数」「スーパーライク数」「視聴人数」などの応援要素を総合して算出されているが，そのロジックは公式からは<a href="https://note.com/palmu/n/nc853285c3db3#f469e53e-1e96-4c56-8de5-476f1ed9d6f8">公開されていない</a>．
+
+<p>
+一方で，経験的にライブスコアはリスナーに投げられたコイン数の 3 倍になるということが知られている．
+
+<span class="sub-title">跳ねる</span>
+
+<p>ライブスコアは 1 分毎に更新されるため，ギフトが投げられてからライブスコアに反映されるまでにラグがある．
+ギフトが投げられた数秒〜数十秒後にライブスコアが増えることを「ライブスコアが跳ねる」と表現する．
+
+<p>なるべくおおきくライブスコアが跳ねるようにするために，
+100コイン以上のギフトが投げられたときに，「キラコメ」を連投することや，
+「おいギフ」と呼ばれる方法をとることがいいとされている．<p>
+
+<p>「キラコメ」は，なんらかのコメントのことだが，
+６文字以上必要とか，記号列よりも，通常の会話のようなもののほうが良いとか言われている．
+
+<p>「おいギフ」は，大きなギフトに対して，追加でギフトを贈ることである．
+
+<span class="sub-title">詰まる</span>
+
+<p>「5,000コイン投げてもらったのに，ライブスコアが 10,000 (つまり 2 倍)にしかなりませんでした．」
+
+<p>例えば，枠を開いてからすぐの場合や，アクティブユーザーが少ないとき，一人だけがコインを投げた場合などに起こることが多いようだ．
+
+<p>この状況を「詰まっている」と表現することがある．
+この詰まりを解消すれば，最終的にはこの 5,000 コイン分も含めてライブスコアがコイン数の 3 倍になる．
+
+<p>方法は，他のリスナーにコインを投げてもらう．例えば 100 コインのギフトを投げてもらうと, 2,000 ライブスコアが追加されたりする.
+
+<p>このように，まだ投げていない他のリスナーに小さなギフトでも良いので投げてもらうことで，ライブスコアがコイン数の 3 倍に近づいていく.
+
+<span class="sub-title">ご参考</span>
+
+<ul class="help">
+	<li><a href="https://note.com/palmu/n/nc853285c3db3">【たいむず（2024/10）】ライブスコアの導入</a> <a href="https://note.com/palmu/n/nc853285c3db3#f469e53e-1e96-4c56-8de5-476f1ed9d6f8">6. ライブスコアの算出ロジックについて</a> (2024/09/24)
+</ul>
+
+</main>
+
+<footer id="footer"></footer>
+
+</body>
+</html>
+

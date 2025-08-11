@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <base href="../meter/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1005701113779263"
+	       crossorigin="anonymous"></script>
+  <script src="js/meter.js?v=25"></script>
+  <script  src="js/navi.js?v=25"></script>
+  <script  src="../docs/js/docs.js?v=25" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="../docs/css/docs.css?v=25">
+  <link rel="icon" href="favicon.ico" type="image/icon">
+  <title>コイン効率 - パルムの計算機 for Palmu</title>
+  <meta name="description" content="Palmu（パルム）専用のコイン計算機．コイン効率について">
+</head>
+<body>
+
+<header>
+<h1 class="tool-title">ぱ(る)むの計算機 for Palmu</h1>
+<nav id="navi_rank"></nav>
+<nav id="navi_func"></nav>
+
+<h2 class="docs-title">コイン効率</h2>
+</header>
+
+<main>
+<div class="intro">
+	<span class="term" data-term="score">ライブスコア</span>の算出ロジックは公開されていないが，
+	<span class="term" data-term="coin">コイン数</span>（ギフト数）は，ライブスコアに対して最も寄与する因子であることは間違いない．
+	如何に少ないコインで目標を達成するか．
+	ライバーがリスナーの負担を減らし，自身のランク目標を達成・維持するためにコイン効率の最大化は重要な問題である．
+	<p>
+	実際の運用では，イベントとの兼ね合いもあるため，もう少し複雑になるが，ここではイベントはないものとして考える．
+	また，2025/08/11 現在，変動値（ボーダー）が，確定値（保証ボーダー）を下回ることがほとんどないため，変動値を狙うことも考えないとする．
+</div>
+
+<span class="sub-title">2 つの問題</span>
+
+コイン効率を考える上で，以下の 2 つの問題がある．
+
+<ol>
+	<li>ランクキープ・ランクアップのために，どのように<span class="term" data-term="point">デイリーランクポイント</span>を獲得するか
+	<li>如何に少ないコインで目標のライブスコアを達成するか
+</ol>
+
+<p>
+後者は，リスナーに投げられたコインを如何にライブスコアに反映させるかという問題である．
+これについては<a href="../docs/livescore.html">別稿</a>に記載する．
+
+<p>
+以下，前者の問題について考える．
+これは，たとえばランクキープであれば，7 日間で +12 ポイントをどのように獲得するかという問題である．
+変動値を考えない場合は，確定値によって必要なライブスコアがわかるため，
+事前にどのようにデイリーランクポイントを獲得するのが効率的か決定できる．
+
+<span class="sub-title">プランの確定</span>
+
+コイン効率を最大化するために，どのようなプランでデイリーランクポイントを獲得するかを決定することを考える．
+
+<p>
+7 日間でデイリーランクポイントを以下のように獲得するとする．
+
+<ul class="plan">
+	<li>1 日目：+4 ポイント
+	<li>2 日目：+2 ポイント
+	<li>3 日目：+1 ポイント
+	<li>4 日目：+6 ポイント
+	<li>5 日目：+1 ポイント
+	<li>6 日目：+2 ポイント
+	<li>7 日目：+1 ポイント
+</ul>
+
+これをプランといい，ここでは，<span class="inline-code">4216121</span> と表記する．
+（なお，用語 プランはツール用に作った用語であり，Palmu上では通用しないことに注意されたい．）
+確定値が固定とすると，プラン <span class="inline-code">6422111</span>，つまり，
+
+<ul class="plan">
+	<li>1 日目：+6 ポイント
+	<li>2 日目：+4 ポイント
+	<li>3 日目：+2 ポイント
+	<li>4 日目：+2 ポイント
+	<li>5 日目：+1 ポイント
+	<li>6 日目：+1 ポイント
+	<li>7 日目：+1 ポイント
+</ul>
+
+も同一のライブスコアが必要となるプランである．
+そのため，これらのプランは同一視することができるので，本稿では，降順に並べたプランを代表として扱う．
+
+<p>
+ランクキープ，つまり，7 日間で +12 ポイントを獲得するためには，以下の 4 つのプランが考えられる．
+
+<ul class="plan">
+	<li><span class="inline-code">6111111</span>  (合計 +12 ポイント)
+	<li><span class="inline-code">4411111</span>  (合計 +13 ポイント)
+	<li><span class="inline-code">4221111</span>  (合計 +12 ポイント)
+	<li><span class="inline-code">2222211</span>  (合計 +12 ポイント)
+</ul>
+
+それぞれのプランに対して必要なライブスコアの合計を比較すれば，どのプランが最もコイン効率が良いかを決定できる．
+
+<p>
+どのプランが最も効率がいいかは，保証ボーダー（確定値）に依存し，一定ではない．
+そのため，<span class="term" data-term="rank">ユーザーランク</span>が変わったり，保証ボーダーが切り替わるたびに計算し直す必要がある．
+
+<span class="sub-title">ぱ(る)むの計算機 「プラン」</span>
+
+<a href="plan.html">ツール</a>では，任意のランク，日数，獲得したいデイリーランクポイント数に対して，
+すべてのプランを列挙し，それぞれのプランに対して必要なコイン数（または，ライブスコア）を計算する．
+
+<p>
+目標とするデイリーランクポイントが必ず獲得できるとは限らないので，
+プランB（目標値が獲得できなかったときのプラン）も検討しながら，計画をたてましょう．
+
+<span class="sub-title">ご参考</span>
+
+<ul class="help">
+	<li><a href="https://note.com/palmu/n/nc853285c3db3">【たいむず（2024/10）】ライブスコアの導入</a> <a href="https://note.com/palmu/n/nc853285c3db3#f469e53e-1e96-4c56-8de5-476f1ed9d6f8">6. ライブスコアの算出ロジックについて</a> (2024/09/24)
+</ul>
+
+</main>
+
+<footer id="footer"></footer>
+
+</body>
+</html>
+

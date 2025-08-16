@@ -12,6 +12,18 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 浮かせて目立たせる */
 }
 
+.img-container {
+  text-align: center;
+  width: 100%;
+}
+.img-container img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: inline-block;
+}
+
+
 /***************************************************
  * 個別: listener_title.html
  ***************************************************/

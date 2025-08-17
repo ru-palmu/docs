@@ -12,15 +12,28 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 浮かせて目立たせる */
 }
 
+.figure-row {
+  display: flex;
+  justify-content: center;   /* 中央寄せ */
+  align-items: flex-end;  /* ← キャプション開始位置を揃える */
+  gap: 20px;                 /* 図の間隔 */
+  flex-wrap: wrap;           /* スマホで狭い時は折り返し */
+}
+
 .img-container {
   text-align: center;
-  width: 100%;
+  max-width: 200px;
 }
 .img-container img {
   width: 100%;
   max-width: 200px;
   height: auto;
-  display: inline-block;
+  display: block;
+}
+.img-container figcaption {
+  font-size: 0.9em;   /* 少し小さめの文字 */
+  color: #555;        /* 薄い色で本文との差別化 */
+  margin-top: 0.3em;  /* 画像との間隔 */
 }
 
 
@@ -143,4 +156,10 @@ table.fan-badge td:nth-child(4),
 table.fan-badge td:nth-child(5) {
 	min-width: 4em;
 }
+
+.badge-1 { background-color: #8ACEF0; }
+.badge-2 { background-color: #9C8BFF; }
+.badge-3 { background-color: #EF83EB; }
+.badge-4 { background-color: #FF6B8F; }
+.badge-5 { background-color: #FF9F5B; }
 

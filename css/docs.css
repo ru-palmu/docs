@@ -13,27 +13,103 @@
 }
 
 .figure-row {
-  display: flex;
-  justify-content: center;   /* 中央寄せ */
-  align-items: flex-end;  /* ← キャプション開始位置を揃える */
-  gap: 20px;                 /* 図の間隔 */
-  flex-wrap: wrap;           /* スマホで狭い時は折り返し */
+  display: grid;
+  grid-auto-flow: column;          /* 列方向に詰める */
+  grid-auto-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;   /* 1行目=画像, 2行目=キャプション */
+  gap: 8px 8px;                   /* 行間 / 列間 */
+  align-items: start;
 }
 
-.img-container {
-  text-align: center;
-  max-width: 200px;
+.figure-row .img-container {
+  display: contents;               /* 子(img と figcaption)を親グリッドに直接参加させる */
+  margin: 0;                       /* figureの余白は消えるので gap で調整 */
 }
-.img-container img {
+
+.figure-row img {
+  grid-row: 1;                     /* 画像は1行目に */
+  justify-self: center;
   width: 100%;
   max-width: 200px;
   height: auto;
-  display: block;
+  object-fit: contain;             /* 必要なら */
 }
-.img-container figcaption {
+
+.figure-row figcaption {
   font-size: 0.9em;   /* 少し小さめの文字 */
   color: #555;        /* 薄い色で本文との差別化 */
-  margin-top: 0.3em;  /* 画像との間隔 */
+  grid-row: 2;                     /* キャプションは2行目に（全列で同じ行に並ぶ） */
+  text-align: center;
+  line-height: 1.4;                /* 各キャプションで同じ line-height に */
+}
+
+
+/***************************************************
+ * <TABLE>
+ ***************************************************/
+
+table.docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff; /* 白背景 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  color: #264d26;
+}
+
+table.docs-table th,
+table.docs-table td {
+  padding: 4px 11px;
+  border-bottom: 1px solid #c6e0b4;
+  text-align: right;
+}
+
+table.docs-table th {
+  background-color: #a8d5a2;
+  color: #1b3a1b;
+  font-weight: 600;
+}
+
+table.docs-table tbody tr:nth-child(even) {
+  background-color: #e4f0dc;
+}
+
+table.docs-table tbody tr:hover {
+  background-color: #c8e6a4;
+  cursor: default;
+}
+
+/***************************************************
+ * <BLOCKQUOTE>
+ ***************************************************/
+
+.quote {
+  border-left: 4px solid #d0d0d0;  /* 左線は淡いグレー */
+  padding: 0.5em 1em;
+  margin: 1em 1.2em;
+  /* background-color: #faf8f5;       /* 淡いベージュ背景 */
+  background-color: #f7f9f8;   /* body に馴染む淡い色 */
+  font-style: normal;               /* 本文は斜体にしない */
+  color: #333;                      /* 本文文字色 */
+}
+
+
+
+.quote footer {
+  text-align: right;                /* 右下に寄せる */
+  font-style: italic;               /* 引用元を斜体に */
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+
+.quote footer a {
+  text-decoration: none;            /* 下線を消す */
+  color: #666;                      /* 引用元文字色 */
+}
+
+.quote footer a:hover {
+  text-decoration: underline;       /* ホバーで下線 */
 }
 
 

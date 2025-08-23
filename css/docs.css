@@ -218,8 +218,15 @@ table.fan-badge th {
   border: 1px solid #ccc;
   padding: 4px 6px;
 }
-table.fan-badge tr:nth-child(even) {
+
+table.fan-badge tr.cond1 {
   background-color: #e4f0dc;
+}
+table.fan-badge tr.cond2 {
+  background-color: #f0f8f4;
+}
+table.fan-badge tr.cond3 {
+  background-color: #f6f9e6;
 }
 
 table.fan-badge td:nth-child(1),

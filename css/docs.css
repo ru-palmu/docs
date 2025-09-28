@@ -12,37 +12,6 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 浮かせて目立たせる */
 }
 
-.figure-row {
-  display: grid;
-  grid-auto-flow: column;          /* 列方向に詰める */
-  grid-auto-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto;   /* 1行目=画像, 2行目=キャプション */
-  gap: 8px 8px;                   /* 行間 / 列間 */
-  align-items: start;
-}
-
-.figure-row .img-container {
-  display: contents;               /* 子(img と figcaption)を親グリッドに直接参加させる */
-  margin: 0;                       /* figureの余白は消えるので gap で調整 */
-}
-
-.figure-row img {
-  grid-row: 1;                     /* 画像は1行目に */
-  justify-self: center;
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  object-fit: contain;             /* 必要なら */
-}
-
-.figure-row figcaption {
-  font-size: 0.9em;   /* 少し小さめの文字 */
-  color: #555;        /* 薄い色で本文との差別化 */
-  grid-row: 2;                     /* キャプションは2行目に（全列で同じ行に並ぶ） */
-  text-align: center;
-  line-height: 1.4;                /* 各キャプションで同じ line-height に */
-}
-
 
 /***************************************************
  * <TABLE>
